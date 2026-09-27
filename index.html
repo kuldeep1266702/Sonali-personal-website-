@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musafir Café — A Little Love Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#d94f7c;--rose2:#f58eaa;--wine:#5b2035;--cream:#fff8f4;--gold:#d9a441;--ink:#3a2630}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 10%,#ffe6ef 0,transparent 35%),radial-gradient(circle at 80% 70%,#fff0cf 0,transparent 35%),linear-gradient(135deg,#fff8f4,#f9e8ef);overflow-x:hidden}
+body.locked{overflow:hidden}
+#intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:linear-gradient(135deg,#351421,#7a2946 55%,#d55d83);color:#fff;text-align:center;transition:opacity .9s,visibility .9s}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-card{padding:38px 28px;max-width:720px}
+.intro-rose{font-size:4rem;animation:heartbeat 1.5s infinite}
+.script{font-family:'Great Vibes',cursive}
+.intro-card h1{font:4.2rem 'Great Vibes',cursive;margin:8px 0}
+.intro-card p{opacity:.9;line-height:1.8;max-width:560px;margin:0 auto 24px}
+.open-btn,.surprise-btn{border:0;border-radius:999px;padding:14px 25px;background:#fff;color:var(--wine);font-weight:600;cursor:pointer;box-shadow:0 10px 35px #0004;transition:.3s}
+.open-btn:hover,.surprise-btn:hover{transform:translateY(-3px) scale(1.02)}
+header{position:sticky;top:0;z-index:50;padding:14px 6%;display:flex;justify-content:space-between;align-items:center;background:#fff8f4cc;backdrop-filter:blur(16px);border-bottom:1px solid #d94f7c33}
+.logo{font:2rem 'Great Vibes',cursive;color:var(--rose)}
+.logo span{font:1rem Poppins,sans-serif;color:var(--wine)}
+nav{display:flex;gap:20px}nav a{color:var(--wine);text-decoration:none;font-size:.9rem}nav a:hover{color:var(--rose)}
+.music-toggle{border:1px solid #d94f7c55;background:#fff8;border-radius:50px;padding:9px 14px;color:var(--wine);cursor:pointer}
+.hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px;padding:70px 8%;position:relative}
+.hero-copy{animation:rise 1s both}.eyebrow{color:var(--rose);letter-spacing:3px;text-transform:uppercase;font-size:.75rem;font-weight:600}.hero h2{font:clamp(3.3rem,7vw,6rem) 'Great Vibes',cursive;color:var(--wine);line-height:.95;margin:15px 0}.hero h2 span{color:var(--rose)}.hero p{line-height:1.9;max-width:600px;color:#674d58}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.primary{background:linear-gradient(135deg,var(--rose),#a92f58);color:#fff;border:0;border-radius:999px;padding:14px 23px;text-decoration:none;box-shadow:0 12px 30px #d94f7c44}.secondary{border:1px solid #d94f7c66;color:var(--wine);border-radius:999px;padding:13px 22px;text-decoration:none;background:#fff8}
+.hero-photo{position:relative;max-width:470px;margin:auto;animation:float 6s ease-in-out infinite}.hero-photo:before{content:"";position:absolute;inset:-18px;border:1px solid #d9a44177;border-radius:35% 65% 60% 40%/40% 35% 65% 60%;transform:rotate(6deg)}.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:30px 30px 120px 30px;box-shadow:0 25px 70px #5b203533}.photo-watermark{position:absolute;right:15px;bottom:14px;color:#fff;background:#5b203566;border:1px solid #fff5;padding:7px 12px;border-radius:30px;font-size:.72rem;letter-spacing:1px}
+.section{padding:90px 7%;position:relative}.section-title{text-align:center;max-width:700px;margin:0 auto 45px}.section-title h3{font:3.4rem 'Great Vibes',cursive;color:var(--wine)}.section-title p{color:#755d66;line-height:1.7}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1100px;margin:auto}.card{position:relative;background:#fff;padding:10px;border-radius:18px;box-shadow:0 12px 35px #5b20351c;cursor:pointer;overflow:hidden;transition:.45s}.card:nth-child(2){transform:translateY(24px) rotate(1deg)}.card:nth-child(5){transform:translateY(24px) rotate(-1deg)}.card:hover{transform:translateY(-8px) rotate(0) scale(1.02);box-shadow:0 22px 55px #5b203533}.card img{display:block;width:100%;height:330px;object-fit:cover;border-radius:13px}.card .caption{padding:13px 9px 8px;font-size:.85rem;color:var(--wine)}.card .mini{color:#9a7180;font-size:.75rem;margin-top:4px}.card:after{content:"♡";position:absolute;right:18px;top:18px;background:#fffdd;border-radius:50%;width:35px;height:35px;display:grid;place-items:center;color:var(--rose);font-size:1.2rem;opacity:0;transform:scale(.5);transition:.3s}.card:hover:after{opacity:1;transform:scale(1)}
+.quote-band{background:linear-gradient(135deg,#6c2440,#b63f68);color:#fff;text-align:center;padding:80px 8%;overflow:hidden;position:relative}.quote-band:before,.quote-band:after{content:"🌹";position:absolute;font-size:8rem;opacity:.08}.quote-band:before{left:3%;top:5%}.quote-band:after{right:4%;bottom:-15%}.quote{font:clamp(2rem,4vw,3.4rem) 'Great Vibes',cursive;max-width:850px;margin:auto}.quote small{display:block;font:500 .8rem Poppins,sans-serif;letter-spacing:2px;margin-top:20px;opacity:.8}
+.surprise{text-align:center;background:#fff7f0}.surprise-box{max-width:760px;margin:auto;padding:45px 25px;border-radius:30px;background:#fff;box-shadow:0 20px 60px #5b203522;border:1px solid #d94f7c22}.surprise-message{min-height:85px;font:2rem 'Great Vibes',cursive;color:var(--wine);display:grid;place-items:center;margin:20px 0}.petal{position:fixed;top:-30px;z-index:100;pointer-events:none;animation:fall linear forwards;font-size:20px}.heart{position:fixed;bottom:-30px;z-index:100;pointer-events:none;animation:floatHeart linear forwards}
+footer{text-align:center;padding:45px 20px;color:#80636e;background:#fff4ee}.footer-love{font:2.5rem 'Great Vibes',cursive;color:var(--rose)}
+.modal{position:fixed;inset:0;background:#1f0d1599;backdrop-filter:blur(8px);z-index:500;display:none;align-items:center;justify-content:center;padding:25px}.modal.show{display:flex}.modal-inner{max-width:900px;width:100%;background:#fff8f4;border-radius:25px;padding:15px;position:relative;box-shadow:0 30px 100px #0006}.modal-inner img{width:100%;max-height:76vh;object-fit:contain;border-radius:18px}.modal-close{position:absolute;right:12px;top:12px;border:0;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--wine);font-size:1.3rem;cursor:pointer}.modal-text{text-align:center;padding:15px 10px 5px;color:var(--wine)}
+@keyframes rise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}@keyframes float{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-12px) rotate(-1deg)}}@keyframes heartbeat{50%{transform:scale(1.15)}}@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(700deg);opacity:0}}@keyframes floatHeart{to{transform:translateY(-115vh) rotate(20deg);opacity:0}}
+@media(max-width:850px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:50px}.hero-photo{max-width:390px}.gallery{grid-template-columns:1fr 1fr}.card:nth-child(2),.card:nth-child(5){transform:none}.card img{height:300px}}
+@media(max-width:520px){.intro-card h1{font-size:3.3rem}.gallery{grid-template-columns:1fr}.hero h2{font-size:3.8rem}.section{padding:65px 5%}}
+</style>
+</head>
+<body class="locked">
+<div id="intro">
+  <div class="intro-card">
+    <div class="intro-rose">🌹</div>
+    <h1>A Little Musafir Story</h1>
+    <p>Some moments are photographs. Some become memories. And some quietly turn into stories worth keeping.</p>
+    <button class="open-btn" id="openStory">Open the story ♥</button>
+  </div>
+</div>
+
+<header>
+  <div class="logo">Musafir <span>♡ personal stories</span></div>
+  <nav><a href="#home">Home</a><a href="#memories">Memories</a><a href="#words">Words</a><a href="#surprise">Surprise</a></nav>
+  <button class="music-toggle" id="musicToggle">♫ Music: ON</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">stories • smiles • little journeys</div>
+    <h2>Where every <span>smile</span> becomes a memory.</h2>
+    <p>A small digital garden made from photographs, warm words, roses and the feeling of a song playing softly in the background.</p>
+    <div class="hero-actions"><a class="primary" href="#memories">Walk through the memories</a><a class="secondary" href="#surprise">Find a surprise ✨</a></div>
+  </div>
+  <div class="hero-photo"><img src="47069.jpg" alt="Featured memory"><div class="photo-watermark">MUSAFIR • MEMORIES</div></div>
+</section>
+
+<section class="section" id="memories">
+  <div class="section-title"><h3>Little moments, big feelings</h3><p>Tap any photograph to open it. Each memory carries its own little line from the heart.</p></div>
+  <div class="gallery">
+    <article class="card" data-img="47069.jpg" data-quote="Somewhere between a smile and a silence, a beautiful memory begins."><img src="47069.jpg" alt="Memory 1"><div class="caption">A gentle beginning<div class="mini">“Keep the moments that make your heart pause.”</div></div></article>
+    <article class="card" data-img="47073.jpg" data-quote="The sweetest stories are often written without saying a word."><img src="47073.jpg" alt="Memory 2"><div class="caption">Soft smiles<div class="mini">“Happiness looks good when it is unplanned.”</div></div></article>
+    <article class="card" data-img="47077.jpg" data-quote="A little warmth, a little courage, and a heart that keeps choosing joy."><img src="47077.jpg" alt="Memory 3"><div class="caption">A quiet glow<div class="mini">“Let your light arrive before your words do.”</div></div></article>
+    <article class="card" data-img="47064.jpg" data-quote="Life is a journey; the lovely part is finding reasons to smile along the way."><img src="47064.jpg" alt="Memory 4"><div class="caption">Wander & wonder<div class="mini">“Take the long way when the view is worth it.”</div></div></article>
+    <article class="card" data-img="47065.jpg" data-quote="Every journey has a picture that says more than a thousand conversations."><img src="47065.jpg" alt="Memory 5"><div class="caption">Musafir on the move<div class="mini">“Go where the heart feels a little freer.”</div></div></article>
+    <article class="card" data-img="47061.jpg" data-quote="Love is also found in the ordinary: a window, a pause, a familiar smile."><img src="47061.jpg" alt="Memory 6"><div class="caption">A beautiful pause<div class="mini">“Ordinary days become precious in hindsight.”</div></div></article>
+    <article class="card" data-img="47062.jpg" data-quote="Sometimes the world frames the moment perfectly, and all you have to do is notice."><img src="47062.jpg" alt="Memory 7"><div class="caption">Through the arch<div class="mini">“There is always another beautiful view ahead.”</div></div></article>
+  </div>
+</section>
+
+<section class="quote-band" id="words"><div class="quote">“May your days be soft, your journeys meaningful, and your heart always have a place to return to.”<small>— A little note from Musafir Café</small></div></section>
+
+<section class="section surprise" id="surprise">
+  <div class="section-title"><h3>One more little surprise</h3><p>Press the button. The garden has something sweet to say.</p></div>
+  <div class="surprise-box"><div class="surprise-message" id="surpriseMessage">“Some memories deserve their own little universe.”</div><button class="surprise-btn" id="surpriseBtn">Send a rose 🌹</button></div>
+</section>
+</main>
+
+<footer><div class="footer-love">Made with memories & a little love 🌹</div><p>Musafir Café • Stories, chai & nostalgia</p></footer>
+
+<div class="modal" id="modal"><div class="modal-inner"><button class="modal-close" id="modalClose">×</button><img id="modalImg" src="" alt="Expanded memory"><div class="modal-text" id="modalText"></div></div></div>
+<audio id="bgMusic" loop preload="auto"><source src="Musafir Cafe Kaafi Hai Na (Song) Vikrant Massey,Vedika,Mahima Garvit-Priyansh,Jonita,Aniket.mp3" type="audio/mpeg"></audio>
+<script>
+const audio=document.getElementById('bgMusic'), intro=document.getElementById('intro'), openStory=document.getElementById('openStory'), musicToggle=document.getElementById('musicToggle');
+document.body.classList.add('locked');
+openStory.addEventListener('click',async()=>{intro.classList.add('hide');document.body.classList.remove('locked');try{await audio.play()}catch(e){};musicToggle.textContent='♫ Music: ON';petalBurst(12);});
+musicToggle.addEventListener('click',async()=>{if(audio.paused){try{await audio.play()}catch(e){} musicToggle.textContent='♫ Music: ON'}else{audio.pause();musicToggle.textContent='♫ Music: OFF'}});
+const modal=document.getElementById('modal'),modalImg=document.getElementById('modalImg'),modalText=document.getElementById('modalText');
+document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>{modalImg.src=card.dataset.img;modalText.textContent=card.dataset.quote;modal.classList.add('show');petalBurst(5)}));
+document.getElementById('modalClose').onclick=()=>modal.classList.remove('show');modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+const messages=['“A rose for every memory that still makes the heart smile.”','“If moments could bloom, this one would be a garden.”','“Some people become chapters; some moments become forever.”','“May your next surprise be as beautiful as your favorite memory.”','“Keep choosing the moments that feel like home.”'];
+document.getElementById('surpriseBtn').onclick=()=>{document.getElementById('surpriseMessage').textContent=messages[Math.floor(Math.random()*messages.length)];petalBurst(24);heartBurst(12)};
+function petalBurst(n=8){for(let i=0;i<n;i++){const p=document.createElement('div');p.className='petal';p.textContent=['🌹','🌸','🌷','💗'][Math.floor(Math.random()*4)];p.style.left=Math.random()*100+'vw';p.style.setProperty('--drift',(Math.random()*240-120)+'px');p.style.animationDuration=(4+Math.random()*5)+'s';p.style.fontSize=(15+Math.random()*18)+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),10000)}}
+function heartBurst(n=8){for(let i=0;i<n;i++){const h=document.createElement('div');h.className='heart';h.textContent='♥';h.style.left=Math.random()*100+'vw';h.style.color=['#d94f7c','#f58eaa','#a92f58'][Math.floor(Math.random()*3)];h.style.animationDuration=(4+Math.random()*3)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),8000)}}
+setInterval(()=>{if(!document.hidden)petalBurst(1)},2200);
+</script>
+</body>
+</html>
